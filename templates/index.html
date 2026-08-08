@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Study with Mimi 🌸</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+
+<body class="bg-stone-50 text-gray-800">
+
+<main class="max-w-6xl mx-auto px-6 py-10">
+
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
+    <header class="mb-10">
+
+        <p class="text-sm font-medium text-violet-500">
+            YOUR PERSONAL STUDY COMPANION
+        </p>
+
+        <h1 class="text-5xl font-bold text-gray-800 mt-2">
+            Study with Mimi 🌸
+        </h1>
+
+        <p class="text-gray-600 mt-3 text-lg">
+            Turn your notes into a personalized study session.
+        </p>
+
+    </header>
+
+
+    <!-- ========================================
+         SETUP SECTION
+    ========================================= -->
+
+    <section id="setupSection">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+
+            <!-- NOTES -->
+
+            <div
+                class="bg-white rounded-3xl p-6 shadow-sm
+                       border border-violet-100">
+
+                <h2 class="text-xl font-semibold text-gray-800">
+                    ⋆.˚ Add your notes
+                </h2>
+
+                <p class="text-sm text-gray-500 mt-1 mb-4">
+                    Paste your study material below.
+                </p>
+
+                <textarea
+                    id="notes"
+                    placeholder="Paste your notes here..."
+                    class="w-full h-64 resize-none rounded-2xl
+                           border border-gray-200 p-4 text-gray-700
+                           outline-none focus:ring-2
+                           focus:ring-violet-200
+                           focus:border-violet-300"></textarea>
+
+            </div>
+
+
+            <!-- PDF -->
+
+            <div
+                class="bg-white rounded-3xl p-6 shadow-sm
+                       border border-violet-100">
+
+                <h2 class="text-xl font-semibold text-gray-800">
+                    𐙚 Upload a PDF
+                </h2>
+
+                <p class="text-sm text-gray-500 mt-1 mb-4">
+                    Or upload your study material as a PDF.
+                </p>
+
+                <label
+                    class="flex flex-col items-center justify-center
+                           h-64 rounded-2xl border-2 border-dashed
+                           border-violet-200 bg-violet-50/50
+                           cursor-pointer hover:bg-violet-50
+                           transition">
+
+                    <span class="text-4xl mb-3">
+                        
+                    </span>
+
+                    <span class="font-medium text-gray-700">
+                        Choose a PDF
+                    </span>
+
+                    <span class="text-sm text-gray-400 mt-1">
+                        Click to browse your files
+                    </span>
+
+                    <input
+                        type="file"
+                        id="pdf"
+                        accept=".pdf,application/pdf"
+                        class="hidden">
+
+                </label>
+
+                <p
+                    id="fileName"
+                    class="text-sm text-violet-500
+                           mt-3 text-center">
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================
+             CUSTOMIZE
+        ========================================= -->
+
+        <section
+            class="mt-6 bg-white rounded-3xl p-6 shadow-sm
+                   border border-violet-100">
+
+            <h2 class="text-xl font-semibold text-gray-800">
+                ˚.⋆ Customize your study session
+            </h2>
+
+            <p class="text-sm text-gray-500 mt-1 mb-6">
+                Choose how Mimi should help you study. ☺︎
+            </p>
+
+
+            <!-- STUDY MODE -->
+
+            <div class="mb-6">
+
+                <label
+                    class="block text-sm font-medium
+                           text-gray-700 mb-3">
+
+                    How do you want to study?
+
+                </label>
+
+
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+
+
+                    <!-- LEARN -->
+
+                    <button
+                        type="button"
+                        class="study-mode border border-gray-200
+                               rounded-2xl p-4 text-left
+                               hover:border-violet-200
+                               hover:bg-violet-50/50
+                               transition">
+
+                        <div class="text-2xl mb-2">
+                            𖡎
+                        </div>
+
+                        <div class="font-semibold text-gray-800">
+                            Learn
+                        </div>
+
+                        <div class="text-sm text-gray-500 mt-1">
+                            Understand the topic first.
+                        </div>
+
+                    </button>
+
+
+                    <!-- QUIZ -->
+
+                    <button
+                        type="button"
+                        class="study-mode border-2
+                               border-violet-300 bg-violet-50
+                               rounded-2xl p-4 text-left">
+
+                        <div class="text-2xl mb-2">
+                            📝
+                        </div>
+
+                        <div class="font-semibold text-gray-800">
+                            Quiz
+                        </div>
+
+                        <div class="text-sm text-gray-500 mt-1">
+                            Test what you know.
+                        </div>
+
+                    </button>
+
+
+                    <!-- FLASHCARDS -->
+
+                    <button
+                        type="button"
+                        class="study-mode border border-gray-200
+                               rounded-2xl p-4 text-left
+                               hover:border-violet-200
+                               hover:bg-violet-50/50
+                               transition">
+
+                        <div class="text-2xl mb-2">
+                            ⎙
+                        </div>
+
+                        <div class="font-semibold text-gray-800">
+                            Flashcards
+                        </div>
+
+                        <div class="text-sm text-gray-500 mt-1">
+                            Review key concepts.
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION COUNT -->
+
+            <div class="mb-6">
+
+                <label
+                    class="block text-sm font-medium
+                           text-gray-700 mb-3">
+
+                    How many questions?
+
+                </label>
+
+                <div class="flex flex-wrap gap-3">
+
+                    <button
+                        type="button"
+                        class="question-count px-5 py-2
+                               rounded-full border-2
+                               border-violet-300
+                               bg-violet-50 text-violet-600
+                               font-medium">
+
+                        5
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="question-count px-5 py-2
+                               rounded-full border
+                               border-gray-200
+                               text-gray-600
+                               hover:border-violet-200">
+
+                        10
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="question-count px-5 py-2
+                               rounded-full border
+                               border-gray-200
+                               text-gray-600
+                               hover:border-violet-200">
+
+                        15
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="question-count px-5 py-2
+                               rounded-full border
+                               border-gray-200
+                               text-gray-600
+                               hover:border-violet-200">
+
+                        20
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- DIFFICULTY -->
+
+            <div class="mb-6">
+
+                <label
+                    class="block text-sm font-medium
+                           text-gray-700 mb-3">
+
+                    Difficulty
+
+                </label>
+
+                <div class="flex flex-wrap gap-3">
+
+                    <button
+                        type="button"
+                        class="difficulty px-5 py-2
+                               rounded-full border-2
+                               border-violet-300
+                               bg-violet-50
+                               text-violet-600 font-medium">
+
+                        Easy
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="difficulty px-5 py-2
+                               rounded-full border
+                               border-gray-200
+                               text-gray-600
+                               hover:border-violet-200">
+
+                        Medium
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="difficulty px-5 py-2
+                               rounded-full border
+                               border-gray-200
+                               text-gray-600
+                               hover:border-violet-200">
+
+                        Hard
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOPIC -->
+
+            <div class="mb-6">
+
+                <label
+                    for="topic"
+                    class="block text-sm font-medium
+                           text-gray-700 mb-3">
+
+                    What are you studying?
+
+                </label>
+
+                <input
+                    type="text"
+                    id="topic"
+                    placeholder="e.g. Python Functions, Probability, Biology..."
+                    class="w-full rounded-2xl border
+                           border-gray-200 px-4 py-3
+                           text-gray-700 outline-none
+                           focus:ring-2
+                           focus:ring-violet-200
+                           focus:border-violet-300">
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                id="errorMessage"
+                class="hidden mb-5 rounded-2xl
+                       bg-red-50 border border-red-100
+                       text-red-600 px-4 py-3 text-sm">
+            </div>
+
+
+            <!-- START -->
+
+            <button
+                id="startStudying"
+                type="button"
+                class="w-full sm:w-auto
+                       bg-violet-500
+                       hover:bg-violet-600
+                       text-white font-semibold
+                       px-8 py-3 rounded-2xl
+                       shadow-sm hover:shadow-md
+                       transition">
+
+                ╰┈➤ Start Studying
+
+            </button>
+
+        </section>
+
+    </section>
+
+
+    <!-- ========================================
+         LOADING
+    ========================================= -->
+
+    <section
+        id="loadingSection"
+        class="hidden mt-10">
+
+        <div
+            class="bg-white rounded-3xl p-10 shadow-sm
+                   border border-violet-100 text-center">
+
+            <div class="text-4xl mb-4">
+                𐙚
+            </div>
+
+            <h2
+                class="text-xl font-semibold text-gray-800">
+
+                Mimi is preparing your study session... 🌸
+
+            </h2>
+
+            <p class="text-gray-500 mt-2">
+                Give me a moment to turn your notes
+                into something useful. ☺︎
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         LEARN SECTION
+    ========================================= -->
+
+    <section
+        id="learnSection"
+        class="hidden mt-10">
+
+        <div
+            class="bg-white rounded-3xl p-6 md:p-8
+                   shadow-sm border border-violet-100">
+
+
+            <!-- HEADER -->
+
+            <div class="mb-8">
+
+                <p
+                    class="text-sm font-medium
+                           text-violet-500">
+
+                    YOUR STUDY GUIDE 🌿
+
+                </p>
+
+                <h2
+                    id="learnTitle"
+                    class="text-3xl font-bold
+                           text-gray-800 mt-2">
+
+                    Learn
+
+                </h2>
+
+                <p
+                    id="learnInfo"
+                    class="text-gray-500 mt-2">
+
+                    Let's understand this topic first.
+
+                </p>
+
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <div
+                class="mb-6 p-6 rounded-2xl
+                       bg-violet-50
+                       border border-violet-100">
+
+                <h3
+                    class="text-xl font-semibold
+                           text-gray-800 mb-3">
+
+                    🌿 Overview
+
+                </h3>
+
+                <p
+                    id="learnSummary"
+                    class="text-gray-600 leading-relaxed">
+                </p>
+
+            </div>
+
+
+            <!-- KEY POINTS -->
+
+            <div
+                class="p-6 rounded-2xl
+                       bg-stone-50
+                       border border-gray-100">
+
+                <h3
+                    class="text-xl font-semibold
+                           text-gray-800 mb-4">
+
+                    🌿 Key Points
+
+                </h3>
+
+                <ul
+                    id="learnKeyPoints"
+                    class="space-y-3">
+                </ul>
+
+            </div>
+
+
+            <!-- IMPORTANT TERMS -->
+
+            <div
+                id="learnTermsContainer"
+                class="hidden mt-6 p-6 rounded-2xl
+                       bg-white border border-violet-100">
+
+                <h3
+                    class="text-xl font-semibold
+                           text-gray-800 mb-4">
+
+                    ✦ Important Terms
+
+                </h3>
+
+                <div
+                    id="learnTerms"
+                    class="space-y-3">
+                </div>
+
+            </div>
+
+
+            <!-- NEW SESSION -->
+
+            <button
+                id="learnNewSession"
+                type="button"
+                class="mt-8 px-6 py-3 rounded-2xl
+                       border border-violet-200
+                       text-violet-600
+                       hover:bg-violet-50
+                       transition">
+
+                Start Another Session
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         QUIZ SECTION
+    ========================================= -->
+
+    <section
+        id="quizSection"
+        class="hidden mt-10">
+
+        <div
+            class="bg-white rounded-3xl p-6 md:p-8
+                   shadow-sm border border-violet-100">
+
+
+            <!-- QUIZ HEADER -->
+
+            <div class="mb-8">
+
+                <p
+                    class="text-sm font-medium
+                           text-violet-500">
+
+                    YOUR STUDY SESSION
+
+                </p>
+
+                <h2
+                    id="quizTitle"
+                    class="text-3xl font-bold
+                           text-gray-800 mt-2">
+
+                    Quiz
+
+                </h2>
+
+                <p
+                    id="quizInfo"
+                    class="text-gray-500 mt-2">
+                </p>
+
+            </div>
+
+
+            <!-- QUIZ FORM -->
+
+            <form id="quizForm">
+
+                <div
+                    id="questionsContainer">
+                </div>
+
+                <button
+                    id="submitQuiz"
+                    type="submit"
+                    class="hidden mt-8 w-full
+                           bg-violet-500
+                           hover:bg-violet-600
+                           text-white font-semibold
+                           py-3 rounded-2xl
+                           transition">
+
+                    Check My Answers ★⋆.
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         FLASHCARD SECTION
+    ========================================= -->
+
+    <section
+        id="flashcardSection"
+        class="hidden mt-10">
+
+        <div
+            class="bg-white rounded-3xl p-6 md:p-8
+                   shadow-sm border border-violet-100">
+
+
+            <!-- HEADER -->
+
+            <div class="mb-8">
+
+                <p
+                    class="text-sm font-medium
+                           text-violet-500">
+
+                    YOUR FLASHCARDS 🌸
+
+                </p>
+
+                <h2
+                    id="flashcardTitle"
+                    class="text-3xl font-bold
+                           text-gray-800 mt-2">
+
+                    Flashcards
+
+                </h2>
+
+                <p
+                    id="flashcardInfo"
+                    class="text-gray-500 mt-2">
+                </p>
+
+            </div>
+
+
+            <!-- CARD -->
+
+            <div
+                class="max-w-3xl mx-auto">
+
+                <div
+                    id="flashcard"
+                    class="min-h-[300px]
+                           rounded-3xl
+                           border border-violet-100
+                           bg-violet-50
+                           p-8 flex flex-col
+                           items-center justify-center
+                           text-center">
+
+                    <p
+                        class="text-sm font-medium
+                               text-violet-500 mb-5">
+
+                        STUDY CARD
+
+                    </p>
+
+                    <p
+                        id="flashcardQuestion"
+                        class="text-2xl font-semibold
+                               text-gray-800
+                               leading-relaxed">
+                    </p>
+
+                    <p
+                        id="flashcardAnswer"
+                        class="hidden text-xl
+                               text-gray-700
+                               leading-relaxed">
+                    </p>
+
+                </div>
+
+
+                <!-- COUNTER -->
+
+                <div
+                    class="text-center mt-5">
+
+                    <span
+                        id="cardCounter"
+                        class="text-sm
+                               text-gray-500">
+
+                        0 / 0
+
+                    </span>
+
+                </div>
+
+
+                <!-- CONTROLS -->
+
+                <div
+                    class="flex flex-wrap
+                           justify-center
+                           gap-3 mt-6">
+
+                    <button
+                        id="previousCard"
+                        type="button"
+                        class="px-5 py-3
+                               rounded-2xl
+                               border border-gray-200
+                               text-gray-600
+                               hover:bg-gray-50
+                               disabled:opacity-40
+                               disabled:cursor-not-allowed">
+
+                        ← Previous
+
+                    </button>
+
+                    <button
+                        id="flipCard"
+                        type="button"
+                        class="px-6 py-3
+                               rounded-2xl
+                               bg-violet-500
+                               hover:bg-violet-600
+                               text-white
+                               font-semibold">
+
+                        Show Answer
+
+                    </button>
+
+                    <button
+                        id="nextCard"
+                        type="button"
+                        class="px-5 py-3
+                               rounded-2xl
+                               border border-gray-200
+                               text-gray-600
+                               hover:bg-gray-50
+                               disabled:opacity-40
+                               disabled:cursor-not-allowed">
+
+                        Next →
+
+                    </button>
+
+                </div>
+
+
+                <!-- NEW SESSION -->
+
+                <div class="text-center">
+
+                    <button
+                        id="flashcardNewSession"
+                        type="button"
+                        class="mt-8 px-6 py-3
+                               rounded-2xl
+                               border border-violet-200
+                               text-violet-600
+                               hover:bg-violet-50
+                               transition">
+
+                        Start Another Session
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         RESULTS
+    ========================================= -->
+
+    <section
+        id="resultSection"
+        class="hidden mt-10">
+
+        <div
+            class="bg-white rounded-3xl p-8
+                   shadow-sm border border-violet-100
+                   text-center">
+
+
+            <div class="text-4xl mb-4">
+                🌿
+            </div>
+
+            <h2
+                class="text-3xl font-bold
+                       text-gray-800">
+
+                Quiz Complete!
+
+            </h2>
+
+
+            <p
+                id="scoreText"
+                class="text-xl text-violet-600
+                       font-semibold mt-4">
+            </p>
+
+
+            <p
+                id="resultMessage"
+                class="text-gray-500 mt-2">
+            </p>
+
+
+            <!-- REVIEW -->
+
+            <div
+                id="reviewContainer"
+                class="mt-8 text-left">
+            </div>
+
+
+            <!-- NEW SESSION -->
+
+            <button
+                id="newStudySession"
+                type="button"
+                class="mt-6 px-6 py-3
+                       rounded-2xl
+                       border border-violet-200
+                       text-violet-600
+                       hover:bg-violet-50
+                       transition">
+
+                Start Another Session
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- ========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
