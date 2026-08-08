@@ -18,6 +18,11 @@ load_dotenv()
 
 app = Flask(__name__)
 
+# Runs regardless of how the app is started — `python app.py`
+# locally, or `gunicorn app:app` in production. The __main__ guard
+# below only fires for the former, so this can't live there.
+init_db()
+
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = os.getenv(
     "GEMINI_MODEL",
@@ -1229,8 +1234,6 @@ def weak_topics():
 # ========================================
 
 if __name__ == "__main__":
-
-    init_db()
 
     app.run(
         debug=True
