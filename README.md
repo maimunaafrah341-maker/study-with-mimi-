@@ -196,7 +196,7 @@ Then open `http://localhost:5000` in your browser.
 
 ## Live demo
 
-🔗 
+🔗 https://study-with-mimi.onrender.com/
 
 ## About
 
