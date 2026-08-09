@@ -166,7 +166,7 @@ Everything happens within the same study workspace.
 ### 1. Clone and install
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/maimunaafrah341-maker/study-with-mimi-
 cd study-with-mimi
 pip install -r requirements.txt
 ```
