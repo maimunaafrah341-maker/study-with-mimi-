@@ -1,923 +1,233 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>Study with Mimi 🌸</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="Mimi is a focused AI study workspace for learning, practice, and review.">
+    <title>Mimi — AI Study Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
-
-<body class="bg-stone-50 text-gray-800">
-
-<main class="max-w-6xl mx-auto px-6 py-10">
-
-
-    <!-- ========================================
-         HEADER
-    ========================================= -->
-
-    <header class="mb-10">
-
-        <p class="text-sm font-medium text-violet-500">
-            YOUR PERSONAL STUDY COMPANION
-        </p>
-
-        <h1 class="text-5xl font-bold text-gray-800 mt-2">
-            Study with Mimi 🌸
-        </h1>
-
-        <p class="text-gray-600 mt-3 text-lg">
-            Turn your notes into a personalized study session.
-        </p>
-
-    </header>
-
-
-    <!-- ========================================
-         SETUP SECTION
-    ========================================= -->
-
-    <section id="setupSection">
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-
-            <!-- NOTES -->
-
-            <div
-                class="bg-white rounded-3xl p-6 shadow-sm
-                       border border-violet-100">
-
-                <h2 class="text-xl font-semibold text-gray-800">
-                    ⋆.˚ Add your notes
-                </h2>
-
-                <p class="text-sm text-gray-500 mt-1 mb-4">
-                    Paste your study material below.
-                </p>
-
-                <textarea
-                    id="notes"
-                    placeholder="Paste your notes here..."
-                    class="w-full h-64 resize-none rounded-2xl
-                           border border-gray-200 p-4 text-gray-700
-                           outline-none focus:ring-2
-                           focus:ring-violet-200
-                           focus:border-violet-300"></textarea>
-
+<body>
+    <div class="app-shell">
+        <header class="site-header container">
+            <a class="brand" href="/" aria-label="Mimi home">
+                <span class="brand-mark" aria-hidden="true">M</span>
+                <span class="brand-name">mimi</span>
+            </a>
+            <div class="header-meta">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>Private study workspace</span>
             </div>
+        </header>
 
-
-            <!-- PDF -->
-
-            <div
-                class="bg-white rounded-3xl p-6 shadow-sm
-                       border border-violet-100">
-
-                <h2 class="text-xl font-semibold text-gray-800">
-                    𐙚 Upload a PDF
-                </h2>
-
-                <p class="text-sm text-gray-500 mt-1 mb-4">
-                    Or upload your study material as a PDF.
-                </p>
-
-                <label
-                    class="flex flex-col items-center justify-center
-                           h-64 rounded-2xl border-2 border-dashed
-                           border-violet-200 bg-violet-50/50
-                           cursor-pointer hover:bg-violet-50
-                           transition">
-
-                    <span class="text-4xl mb-3">
-                        
-                    </span>
-
-                    <span class="font-medium text-gray-700">
-                        Choose a PDF
-                    </span>
-
-                    <span class="text-sm text-gray-400 mt-1">
-                        Click to browse your files
-                    </span>
-
-                    <input
-                        type="file"
-                        id="pdf"
-                        accept=".pdf,application/pdf"
-                        class="hidden">
-
-                </label>
-
-                <p
-                    id="fileName"
-                    class="text-sm text-violet-500
-                           mt-3 text-center">
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- ========================================
-             CUSTOMIZE
-        ========================================= -->
-
-        <section
-            class="mt-6 bg-white rounded-3xl p-6 shadow-sm
-                   border border-violet-100">
-
-            <h2 class="text-xl font-semibold text-gray-800">
-                ˚.⋆ Customize your study session
-            </h2>
-
-            <p class="text-sm text-gray-500 mt-1 mb-6">
-                Choose how Mimi should help you study. ☺︎
-            </p>
-
-
-            <!-- STUDY MODE -->
-
-            <div class="mb-6">
-
-                <label
-                    class="block text-sm font-medium
-                           text-gray-700 mb-3">
-
-                    How do you want to study?
-
-                </label>
-
-
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-
-
-                    <!-- LEARN -->
-
-                    <button
-                        type="button"
-                        class="study-mode border border-gray-200
-                               rounded-2xl p-4 text-left
-                               hover:border-violet-200
-                               hover:bg-violet-50/50
-                               transition">
-
-                        <div class="text-2xl mb-2">
-                            𖡎
+        <main class="container page-content">
+            <section class="hero-grid" aria-labelledby="page-title">
+                <div class="hero-copy">
+                    <p class="eyebrow">AI study workspace</p>
+                    <h1 id="page-title">Turn notes into <span>momentum.</span></h1>
+                    <p class="hero-description">A calmer way to understand your material, practice with intention, and know what to review next.</p>
+                    <div class="hero-points" aria-label="Mimi workflow">
+                        <span><strong>01</strong> Add material</span>
+                        <span><strong>02</strong> Choose a mode</span>
+                        <span><strong>03</strong> Study with focus</span>
+                    </div>
+                </div>
+                <aside class="hero-panel" aria-label="Study modes">
+                    <div class="panel-topline">
+                        <span class="panel-label">One workspace</span>
+                        <span class="panel-index">/ 03</span>
+                    </div>
+                    <div class="mode-preview">
+                        <div class="preview-row is-active">
+                            <span class="preview-icon">01</span>
+                            <span><strong>Learn</strong><small>Build a clear mental model</small></span>
+                            <span class="preview-arrow">↗</span>
                         </div>
-
-                        <div class="font-semibold text-gray-800">
-                            Learn
+                        <div class="preview-row">
+                            <span class="preview-icon">02</span>
+                            <span><strong>Quiz</strong><small>Test what you actually know</small></span>
+                            <span class="preview-arrow">↗</span>
                         </div>
-
-                        <div class="text-sm text-gray-500 mt-1">
-                            Understand the topic first.
+                        <div class="preview-row">
+                            <span class="preview-icon">03</span>
+                            <span><strong>Cards</strong><small>Review the details that stick</small></span>
+                            <span class="preview-arrow">↗</span>
                         </div>
+                    </div>
+                    <p class="panel-footnote">Designed for focused sessions, not endless scrolling.</p>
+                </aside>
+            </section>
 
-                    </button>
-
-
-                    <!-- QUIZ -->
-
-                    <button
-                        type="button"
-                        class="study-mode border-2
-                               border-violet-300 bg-violet-50
-                               rounded-2xl p-4 text-left">
-
-                        <div class="text-2xl mb-2">
-                            📝
-                        </div>
-
-                        <div class="font-semibold text-gray-800">
-                            Quiz
-                        </div>
-
-                        <div class="text-sm text-gray-500 mt-1">
-                            Test what you know.
-                        </div>
-
-                    </button>
-
-
-                    <!-- FLASHCARDS -->
-
-                    <button
-                        type="button"
-                        class="study-mode border border-gray-200
-                               rounded-2xl p-4 text-left
-                               hover:border-violet-200
-                               hover:bg-violet-50/50
-                               transition">
-
-                        <div class="text-2xl mb-2">
-                            ⎙
-                        </div>
-
-                        <div class="font-semibold text-gray-800">
-                            Flashcards
-                        </div>
-
-                        <div class="text-sm text-gray-500 mt-1">
-                            Review key concepts.
-                        </div>
-
-                    </button>
-
+            <section id="setupSection" class="setup-section" aria-labelledby="setup-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Start here</p>
+                        <h2 id="setup-title">Set up your session</h2>
+                    </div>
+                    <span class="step-count">01 — 03</span>
                 </div>
 
-            </div>
+                <div class="workspace-grid">
+                    <section class="material-card surface-card" aria-labelledby="material-title">
+                        <div class="card-heading">
+                            <div>
+                                <span class="section-number">01</span>
+                                <h3 id="material-title">Bring your material</h3>
+                            </div>
+                            <span class="card-note">Notes or PDF</span>
+                        </div>
+                        <div class="material-inputs">
+                            <div class="field-block notes-block">
+                                <label for="notes">Paste notes</label>
+                                <textarea id="notes" placeholder="Paste lecture notes, a chapter outline, or anything you want to understand better."></textarea>
+                                <span class="field-helper">Keep it focused. Mimi works from the material you provide.</span>
+                            </div>
+                            <div class="upload-block">
+                                <label for="pdf" class="upload-zone">
+                                    <span class="upload-icon" aria-hidden="true">↑</span>
+                                    <span class="upload-title">Upload a PDF</span>
+                                    <span class="upload-copy">Drop a file here or browse your device</span>
+                                    <span class="upload-type">PDF · text-based documents</span>
+                                    <input type="file" id="pdf" accept=".pdf,application/pdf">
+                                </label>
+                                <p id="fileName" class="file-name" aria-live="polite"></p>
+                            </div>
+                        </div>
+                    </section>
 
+                    <section class="session-card surface-card" aria-labelledby="session-title">
+                        <div class="card-heading">
+                            <div>
+                                <span class="section-number">02</span>
+                                <h3 id="session-title">Shape the session</h3>
+                            </div>
+                            <span class="card-note">Your pace</span>
+                        </div>
 
-            <!-- QUESTION COUNT -->
+                        <div class="control-group">
+                            <span class="control-label">Study mode</span>
+                            <div class="mode-grid" role="group" aria-label="Choose a study mode">
+                                <button type="button" class="study-mode mode-option" data-mode="Learn">
+                                    <span class="mode-option-index">01</span>
+                                    <span class="mode-option-copy"><strong>Learn</strong><small>Understand first</small></span>
+                                </button>
+                                <button type="button" class="study-mode mode-option is-selected" data-mode="Quiz">
+                                    <span class="mode-option-index">02</span>
+                                    <span class="mode-option-copy"><strong>Quiz</strong><small>Test your recall</small></span>
+                                </button>
+                                <button type="button" class="study-mode mode-option" data-mode="Flashcards">
+                                    <span class="mode-option-index">03</span>
+                                    <span class="mode-option-copy"><strong>Cards</strong><small>Review key ideas</small></span>
+                                </button>
+                            </div>
+                        </div>
 
-            <div class="mb-6">
+                        <div class="control-row">
+                            <div class="control-group compact-group">
+                                <span class="control-label">Questions / cards</span>
+                                <div class="segmented-control" role="group" aria-label="Number of questions or cards">
+                                    <button type="button" class="question-count is-selected">5</button>
+                                    <button type="button" class="question-count">10</button>
+                                    <button type="button" class="question-count">15</button>
+                                    <button type="button" class="question-count">20</button>
+                                </div>
+                            </div>
+                            <div class="control-group compact-group">
+                                <span class="control-label">Difficulty</span>
+                                <div class="segmented-control" role="group" aria-label="Difficulty">
+                                    <button type="button" class="difficulty is-selected">Easy</button>
+                                    <button type="button" class="difficulty">Medium</button>
+                                    <button type="button" class="difficulty">Hard</button>
+                                </div>
+                            </div>
+                        </div>
 
-                <label
-                    class="block text-sm font-medium
-                           text-gray-700 mb-3">
-
-                    How many questions?
-
-                </label>
-
-                <div class="flex flex-wrap gap-3">
-
-                    <button
-                        type="button"
-                        class="question-count px-5 py-2
-                               rounded-full border-2
-                               border-violet-300
-                               bg-violet-50 text-violet-600
-                               font-medium">
-
-                        5
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="question-count px-5 py-2
-                               rounded-full border
-                               border-gray-200
-                               text-gray-600
-                               hover:border-violet-200">
-
-                        10
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="question-count px-5 py-2
-                               rounded-full border
-                               border-gray-200
-                               text-gray-600
-                               hover:border-violet-200">
-
-                        15
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="question-count px-5 py-2
-                               rounded-full border
-                               border-gray-200
-                               text-gray-600
-                               hover:border-violet-200">
-
-                        20
-
-                    </button>
-
+                        <div class="field-block topic-block">
+                            <label for="topic">Topic <span>Optional</span></label>
+                            <input type="text" id="topic" placeholder="e.g. Cell biology, calculus, Python functions">
+                        </div>
+                    </section>
                 </div>
 
-            </div>
+                <div id="errorMessage" class="error-message hidden" role="alert"></div>
 
-
-            <!-- DIFFICULTY -->
-
-            <div class="mb-6">
-
-                <label
-                    class="block text-sm font-medium
-                           text-gray-700 mb-3">
-
-                    Difficulty
-
-                </label>
-
-                <div class="flex flex-wrap gap-3">
-
-                    <button
-                        type="button"
-                        class="difficulty px-5 py-2
-                               rounded-full border-2
-                               border-violet-300
-                               bg-violet-50
-                               text-violet-600 font-medium">
-
-                        Easy
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="difficulty px-5 py-2
-                               rounded-full border
-                               border-gray-200
-                               text-gray-600
-                               hover:border-violet-200">
-
-                        Medium
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="difficulty px-5 py-2
-                               rounded-full border
-                               border-gray-200
-                               text-gray-600
-                               hover:border-violet-200">
-
-                        Hard
-
-                    </button>
-
+                <div class="action-bar">
+                    <div class="action-copy">
+                        <span class="section-number">03</span>
+                        <span><strong>Ready when you are.</strong><small>Your material stays in this session.</small></span>
+                    </div>
+                    <button id="startStudying" type="button" class="primary-button">Start session <span aria-hidden="true">↗</span></button>
                 </div>
-
-            </div>
-
-
-            <!-- TOPIC -->
-
-            <div class="mb-6">
-
-                <label
-                    for="topic"
-                    class="block text-sm font-medium
-                           text-gray-700 mb-3">
-
-                    What are you studying?
-
-                </label>
-
-                <input
-                    type="text"
-                    id="topic"
-                    placeholder="e.g. Python Functions, Probability, Biology..."
-                    class="w-full rounded-2xl border
-                           border-gray-200 px-4 py-3
-                           text-gray-700 outline-none
-                           focus:ring-2
-                           focus:ring-violet-200
-                           focus:border-violet-300">
-
-            </div>
-
-
-            <!-- ERROR -->
-
-            <div
-                id="errorMessage"
-                class="hidden mb-5 rounded-2xl
-                       bg-red-50 border border-red-100
-                       text-red-600 px-4 py-3 text-sm">
-            </div>
-
-
-            <!-- START -->
-
-            <button
-                id="startStudying"
-                type="button"
-                class="w-full sm:w-auto
-                       bg-violet-500
-                       hover:bg-violet-600
-                       text-white font-semibold
-                       px-8 py-3 rounded-2xl
-                       shadow-sm hover:shadow-md
-                       transition">
-
-                ╰┈➤ Start Studying
-
-            </button>
-
-        </section>
-
-    </section>
-
-
-    <!-- ========================================
-         LOADING
-    ========================================= -->
-
-    <section
-        id="loadingSection"
-        class="hidden mt-10">
-
-        <div
-            class="bg-white rounded-3xl p-10 shadow-sm
-                   border border-violet-100 text-center">
-
-            <div class="text-4xl mb-4">
-                𐙚
-            </div>
-
-            <h2
-                class="text-xl font-semibold text-gray-800">
-
-                Mimi is preparing your study session... 🌸
-
-            </h2>
-
-            <p class="text-gray-500 mt-2">
-                Give me a moment to turn your notes
-                into something useful. ☺︎
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ========================================
-         LEARN SECTION
-    ========================================= -->
-
-    <section
-        id="learnSection"
-        class="hidden mt-10">
-
-        <div
-            class="bg-white rounded-3xl p-6 md:p-8
-                   shadow-sm border border-violet-100">
-
-
-            <!-- HEADER -->
-
-            <div class="mb-8">
-
-                <p
-                    class="text-sm font-medium
-                           text-violet-500">
-
-                    YOUR STUDY GUIDE 🌿
-
-                </p>
-
-                <h2
-                    id="learnTitle"
-                    class="text-3xl font-bold
-                           text-gray-800 mt-2">
-
-                    Learn
-
-                </h2>
-
-                <p
-                    id="learnInfo"
-                    class="text-gray-500 mt-2">
-
-                    Let's understand this topic first.
-
-                </p>
-
-            </div>
-
-
-            <!-- OVERVIEW -->
-
-            <div
-                class="mb-6 p-6 rounded-2xl
-                       bg-violet-50
-                       border border-violet-100">
-
-                <h3
-                    class="text-xl font-semibold
-                           text-gray-800 mb-3">
-
-                    🌿 Overview
-
-                </h3>
-
-                <p
-                    id="learnSummary"
-                    class="text-gray-600 leading-relaxed">
-                </p>
-
-            </div>
-
-
-            <!-- KEY POINTS -->
-
-            <div
-                class="p-6 rounded-2xl
-                       bg-stone-50
-                       border border-gray-100">
-
-                <h3
-                    class="text-xl font-semibold
-                           text-gray-800 mb-4">
-
-                    🌿 Key Points
-
-                </h3>
-
-                <ul
-                    id="learnKeyPoints"
-                    class="space-y-3">
-                </ul>
-
-            </div>
-
-
-            <!-- IMPORTANT TERMS -->
-
-            <div
-                id="learnTermsContainer"
-                class="hidden mt-6 p-6 rounded-2xl
-                       bg-white border border-violet-100">
-
-                <h3
-                    class="text-xl font-semibold
-                           text-gray-800 mb-4">
-
-                    ✦ Important Terms
-
-                </h3>
-
-                <div
-                    id="learnTerms"
-                    class="space-y-3">
+            </section>
+
+            <section id="loadingSection" class="result-shell hidden" aria-live="polite">
+                <div class="loading-card surface-card">
+                    <div class="loading-orbit" aria-hidden="true"><span></span></div>
+                    <p class="eyebrow">Preparing your session</p>
+                    <h2>Turning your material into a useful next step.</h2>
+                    <p>This usually takes a moment. You can stay on this page while Mimi works.</p>
                 </div>
+            </section>
 
-            </div>
-
-
-            <!-- NEW SESSION -->
-
-            <button
-                id="learnNewSession"
-                type="button"
-                class="mt-8 px-6 py-3 rounded-2xl
-                       border border-violet-200
-                       text-violet-600
-                       hover:bg-violet-50
-                       transition">
-
-                Start Another Session
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ========================================
-         QUIZ SECTION
-    ========================================= -->
-
-    <section
-        id="quizSection"
-        class="hidden mt-10">
-
-        <div
-            class="bg-white rounded-3xl p-6 md:p-8
-                   shadow-sm border border-violet-100">
-
-
-            <!-- QUIZ HEADER -->
-
-            <div class="mb-8">
-
-                <p
-                    class="text-sm font-medium
-                           text-violet-500">
-
-                    YOUR STUDY SESSION
-
-                </p>
-
-                <h2
-                    id="quizTitle"
-                    class="text-3xl font-bold
-                           text-gray-800 mt-2">
-
-                    Quiz
-
-                </h2>
-
-                <p
-                    id="quizInfo"
-                    class="text-gray-500 mt-2">
-                </p>
-
-            </div>
-
-
-            <!-- QUIZ FORM -->
-
-            <form id="quizForm">
-
-                <div
-                    id="questionsContainer">
+            <section id="learnSection" class="result-shell hidden" aria-labelledby="learnTitle">
+                <div class="result-header">
+                    <div><p class="eyebrow">Study guide</p><h2 id="learnTitle">Learn</h2><p id="learnInfo" class="result-subtitle">A clear overview of your material.</p></div>
+                    <span class="result-tag">Learn mode</span>
                 </div>
-
-                <button
-                    id="submitQuiz"
-                    type="submit"
-                    class="hidden mt-8 w-full
-                           bg-violet-500
-                           hover:bg-violet-600
-                           text-white font-semibold
-                           py-3 rounded-2xl
-                           transition">
-
-                    Check My Answers ★⋆.
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-
-    <!-- ========================================
-         FLASHCARD SECTION
-    ========================================= -->
-
-    <section
-        id="flashcardSection"
-        class="hidden mt-10">
-
-        <div
-            class="bg-white rounded-3xl p-6 md:p-8
-                   shadow-sm border border-violet-100">
-
-
-            <!-- HEADER -->
-
-            <div class="mb-8">
-
-                <p
-                    class="text-sm font-medium
-                           text-violet-500">
-
-                    YOUR FLASHCARDS 🌸
-
-                </p>
-
-                <h2
-                    id="flashcardTitle"
-                    class="text-3xl font-bold
-                           text-gray-800 mt-2">
-
-                    Flashcards
-
-                </h2>
-
-                <p
-                    id="flashcardInfo"
-                    class="text-gray-500 mt-2">
-                </p>
-
-            </div>
-
-
-            <!-- CARD -->
-
-            <div
-                class="max-w-3xl mx-auto">
-
-                <div
-                    id="flashcard"
-                    class="min-h-[300px]
-                           rounded-3xl
-                           border border-violet-100
-                           bg-violet-50
-                           p-8 flex flex-col
-                           items-center justify-center
-                           text-center">
-
-                    <p
-                        class="text-sm font-medium
-                               text-violet-500 mb-5">
-
-                        STUDY CARD
-
-                    </p>
-
-                    <p
-                        id="flashcardQuestion"
-                        class="text-2xl font-semibold
-                               text-gray-800
-                               leading-relaxed">
-                    </p>
-
-                    <p
-                        id="flashcardAnswer"
-                        class="hidden text-xl
-                               text-gray-700
-                               leading-relaxed">
-                    </p>
-
+                <div class="guide-grid">
+                    <article class="overview-card surface-card"><span class="content-kicker">Overview</span><p id="learnSummary"></p></article>
+                    <article class="points-card surface-card"><span class="content-kicker">Key points</span><ul id="learnKeyPoints"></ul></article>
                 </div>
+                <article id="learnTermsContainer" class="terms-card surface-card hidden"><span class="content-kicker">Important terms</span><div id="learnTerms" class="terms-grid"></div></article>
+                <button id="learnNewSession" type="button" class="secondary-button">Start another session <span aria-hidden="true">↗</span></button>
+            </section>
 
-
-                <!-- COUNTER -->
-
-                <div
-                    class="text-center mt-5">
-
-                    <span
-                        id="cardCounter"
-                        class="text-sm
-                               text-gray-500">
-
-                        0 / 0
-
-                    </span>
-
+            <section id="quizSection" class="result-shell hidden" aria-labelledby="quizTitle">
+                <div class="result-header">
+                    <div><p class="eyebrow">Practice set</p><h2 id="quizTitle">Your study quiz</h2><p id="quizInfo" class="result-subtitle"></p></div>
+                    <span class="result-tag">Quiz mode</span>
                 </div>
+                <form id="quizForm" class="quiz-form">
+                    <div id="questionsContainer"></div>
+                    <button id="submitQuiz" type="submit" class="primary-button submit-button hidden">Check answers <span aria-hidden="true">↗</span></button>
+                </form>
+            </section>
 
-
-                <!-- CONTROLS -->
-
-                <div
-                    class="flex flex-wrap
-                           justify-center
-                           gap-3 mt-6">
-
-                    <button
-                        id="previousCard"
-                        type="button"
-                        class="px-5 py-3
-                               rounded-2xl
-                               border border-gray-200
-                               text-gray-600
-                               hover:bg-gray-50
-                               disabled:opacity-40
-                               disabled:cursor-not-allowed">
-
-                        ← Previous
-
-                    </button>
-
-                    <button
-                        id="flipCard"
-                        type="button"
-                        class="px-6 py-3
-                               rounded-2xl
-                               bg-violet-500
-                               hover:bg-violet-600
-                               text-white
-                               font-semibold">
-
-                        Show Answer
-
-                    </button>
-
-                    <button
-                        id="nextCard"
-                        type="button"
-                        class="px-5 py-3
-                               rounded-2xl
-                               border border-gray-200
-                               text-gray-600
-                               hover:bg-gray-50
-                               disabled:opacity-40
-                               disabled:cursor-not-allowed">
-
-                        Next →
-
-                    </button>
-
+            <section id="flashcardSection" class="result-shell hidden" aria-labelledby="flashcardTitle">
+                <div class="result-header">
+                    <div><p class="eyebrow">Review deck</p><h2 id="flashcardTitle">Flashcards</h2><p id="flashcardInfo" class="result-subtitle"></p></div>
+                    <span class="result-tag">Cards mode</span>
                 </div>
-
-
-                <!-- NEW SESSION -->
-
-                <div class="text-center">
-
-                    <button
-                        id="flashcardNewSession"
-                        type="button"
-                        class="mt-8 px-6 py-3
-                               rounded-2xl
-                               border border-violet-200
-                               text-violet-600
-                               hover:bg-violet-50
-                               transition">
-
-                        Start Another Session
-
-                    </button>
-
+                <div class="flashcard-layout">
+                    <div class="flashcard-stage">
+                        <div id="flashcard" class="flashcard surface-card">
+                            <div class="flashcard-topline"><span class="content-kicker">Study card</span><span class="flip-hint">Click reveal to turn</span></div>
+                            <p id="flashcardQuestion" class="flashcard-text"></p>
+                            <p id="flashcardAnswer" class="flashcard-text hidden"></p>
+                            <div class="flashcard-footer"><span id="cardCounter">0 / 0</span><span class="card-rule"></span><span>Recall before revealing</span></div>
+                        </div>
+                        <div class="flashcard-controls"><button id="previousCard" type="button" class="icon-button">← <span>Previous</span></button><button id="flipCard" type="button" class="primary-button">Show answer</button><button id="nextCard" type="button" class="icon-button"><span>Next</span> →</button></div>
+                    </div>
                 </div>
+                <button id="flashcardNewSession" type="button" class="secondary-button">Start another session <span aria-hidden="true">↗</span></button>
+            </section>
 
-            </div>
+            <section id="resultSection" class="result-shell hidden" aria-labelledby="result-title">
+                <div class="result-header result-header-centered"><div><p class="eyebrow">Session complete</p><h2 id="result-title">Your review</h2><p id="scoreText" class="score-text"></p><p id="resultMessage" class="result-subtitle"></p></div><span class="result-tag">Results</span></div>
+                <div id="reviewContainer" class="review-list"></div>
+                <button id="newStudySession" type="button" class="secondary-button">Start another session <span aria-hidden="true">↗</span></button>
+            </section>
+        </main>
 
-        </div>
-
-    </section>
-
-
-    <!-- ========================================
-         RESULTS
-    ========================================= -->
-
-    <section
-        id="resultSection"
-        class="hidden mt-10">
-
-        <div
-            class="bg-white rounded-3xl p-8
-                   shadow-sm border border-violet-100
-                   text-center">
-
-
-            <div class="text-4xl mb-4">
-                🌿
-            </div>
-
-            <h2
-                class="text-3xl font-bold
-                       text-gray-800">
-
-                Quiz Complete!
-
-            </h2>
-
-
-            <p
-                id="scoreText"
-                class="text-xl text-violet-600
-                       font-semibold mt-4">
-            </p>
-
-
-            <p
-                id="resultMessage"
-                class="text-gray-500 mt-2">
-            </p>
-
-
-            <!-- REVIEW -->
-
-            <div
-                id="reviewContainer"
-                class="mt-8 text-left">
-            </div>
-
-
-            <!-- NEW SESSION -->
-
-            <button
-                id="newStudySession"
-                type="button"
-                class="mt-6 px-6 py-3
-                       rounded-2xl
-                       border border-violet-200
-                       text-violet-600
-                       hover:bg-violet-50
-                       transition">
-
-                Start Another Session
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-<!-- ========================================
-     JAVASCRIPT
-========================================= -->
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
+        <footer class="site-footer container"><span>mimi / study with intention</span><span>Understand · Practice · Review</span></footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 
 </html>
